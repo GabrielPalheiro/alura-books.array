@@ -1,11 +1,19 @@
 const bookElement = document.getElementById("livros");
+const elementTotalValue = document.getElementById(
+  "valor_total_livros_disponiveis"
+);
 
 function showBooks(books) {
+  elementTotalValue.innerHTML = "";
   bookElement.innerHTML = "";
   books.forEach((book) => {
+    let disponibility =
+      book.quantidade > 0 ? "livro__imagens" : "livro__imagens indisponivel";
     bookElement.innerHTML += `
           <div class="livro">
-          <img class="livro__imagens" src="${book.imagem}" alt="${book.alt}" />
+          <img class="${disponibility}" src="${book.imagem}" alt="${
+      book.alt
+    }" />
           <h2 class="livro__titulo">
           ${book.titulo}
           </h2>
